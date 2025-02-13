@@ -3,8 +3,8 @@
 //
 
 #include <stdio.h>
-#include "../lib/headers/vec.h"
-#include "../lib/headers/until.h"
+#include "../lib/includes/vec.h"
+#include "../lib/includes/until.h"
 
 // функция перевода скрости  гр/мин -> гр/мс
 float v(const float v) {

@@ -6,9 +6,9 @@ set(CMAKE_C_STANDARD 11)
 add_executable(physical_models
         main.c
         zadacha_82/zadacha_82.c
-        lib/headers/vec.h
-        lib/headers/until.h
-        lib/headers/arr.h
+        lib/includes/vec.h
+        lib/includes/until.h
+        lib/includes/arr.h
         lib/src/arr.c
         lib/src/until.c
         lib/src/vec.c)

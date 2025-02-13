@@ -7,8 +7,8 @@
 #include <stdbool.h>
 #include <time.h>
 
-#include "../headers/vec.h"
-#include "../headers/arr.h"
+#include "../includes/vec.h"
+#include "../includes/arr.h"
 
 
 bool random_chance(int percent) {

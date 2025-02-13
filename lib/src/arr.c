@@ -1,7 +1,7 @@
 //
 // Created by ra on 04.11.24.
 //
-#include "../headers/arr.h"
+#include "../includes/arr.h"
 
 array_array_double none_array_array_double = {.data = NULL, .rows = 0, .cols = 0};
 

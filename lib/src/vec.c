@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "../headers/vec.h"
+#include "../includes/vec.h"
 
 vec some_vec(long double x, long double y, long double z) {
     return (vec){.x = x, .y = y, .z = z};
