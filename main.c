@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "headers/zadacha_82.h"
+#include "includes/zadacha_82.h"
 
 int main(void) {
     zadacha_82();
