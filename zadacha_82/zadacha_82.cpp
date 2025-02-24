@@ -3,8 +3,11 @@
 //
 
 #include <stdio.h>
-#include "../lib/includes/vec.h"
+#include <vector>
+
+#include "../lib/includes/Vector.h"
 #include "../lib/includes/until.h"
+#include "../zadacha_dop/drawer/Plot.h"
 
 // функция перевода скрости  гр/мин -> гр/мс
 float v(const float v) {
@@ -12,6 +15,7 @@ float v(const float v) {
 }
 
 void zadacha_82() {
+    Plot plot;
 
     printf("============ ZADACHA 82 ============\n");
 
@@ -24,8 +28,9 @@ void zadacha_82() {
     float T_metalla = a;
     float T_pechi = a;
     float dT = T_pechi - T_metalla;
+
     // Разность температуры металла и печи при которой скорость нагрева dt
-    float T = 90;
+    float T = 20;
     // Скорость нагревания металла (градусов/мин)
     float kT = 1;
     // Длительность эксперимента в mc
@@ -33,25 +38,29 @@ void zadacha_82() {
     float dt = 1;  // шаг по времени (c)
     size_t steps = t / dt;
 
-    vec result_t_pechi[steps];
-    vec result_t_metalla[steps];
+    std::vector<Vector> result_t_pechi;
+    std::vector<Vector> result_t_metalla;
 
     for (int i = 1; i < steps; i ++) {
         // Нагреваем печь
         T_pechi += v(v_pechi);
-        result_t_pechi[i-1] = (vec){ v(i) ,T_pechi, 0};
+        auto vec = Vector(v(static_cast<float>(i)) ,T_pechi, 0);
+        result_t_pechi.push_back(vec);
         // Находим разницу
         dT = T_pechi - T_metalla;
 
         // Увеличиваем температуру металла
         T_metalla += dT * v(kT) / T;
-        result_t_metalla[i-1] = (vec){v(i), T_metalla, 0};
+        vec = Vector(v(static_cast<float>(i)), T_metalla, 0);
+        result_t_metalla.push_back(vec);
     }
 
     printf("конечна темепература печи %f\n", T_pechi);
     printf("конечна темепература металла %f\n", T_metalla);
-    clear_file("/media/ra/_work/ra/ITMO/PHISICS/physical_models/drawer/data.txt");
-    save_data_to_file("/media/ra/_work/ra/ITMO/PHISICS/physical_models/drawer/data.txt", result_t_pechi, steps - 1, "температура печи");
-    save_data_to_file("/media/ra/_work/ra/ITMO/PHISICS/physical_models/drawer/data.txt", result_t_metalla, steps - 1, "температура металла");
+
+    plot.add(result_t_metalla, "график 1");
+    plot.add(result_t_pechi, "график 2");
+
+    plot.show();
     printf("====================================\n");
 }

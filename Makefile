@@ -1,5 +1,37 @@
 run:
 	cmake -S . -B build
-	make -C ./build
-	eval ./build/physical_models
-	python3 ./drawer/draw.py
+
+    # Проверка результата генерации
+    if [ $? -ne 0 ]; then
+        echo "Ошибка при генерации системы сборки с помощью CMake."
+        exit 1
+    fi
+
+    # Шаг 2: Сборка проекта
+    make -C ./build
+
+    # Проверка результата сборки
+    if [ $? -ne 0 ]; then
+        echo "Ошибка при сборке проекта."
+        exit 1
+    fi
+
+    # Шаг 3: Запуск исполняемого файла
+    ./build/physical_models
+
+    # Проверка результата выполнения программы
+    if [ $? -ne 0 ]; then
+        echo "Ошибка при выполнении программы physical_models."
+        exit 1
+    fi
+
+    # Шаг 4: Запуск Python-скрипта для построения графиков
+    python3 ./drawer/draw.py
+
+    # Проверка результата выполнения Python-скрипта
+    if [ $? -ne 0 ]; then
+        echo "Ошибка при выполнении Python-скрипта draw.py."
+        exit 1
+    fi
+
+    echo "Все этапы успешно завершены."
