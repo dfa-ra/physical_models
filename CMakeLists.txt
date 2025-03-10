@@ -16,11 +16,13 @@ add_executable(physical_models
         zadacha_82/zadacha_82.cpp
         lib/includes/Vector.h
         lib/includes/until.h
-        zadacha_dop/drawer/Plot.cpp
-        zadacha_dop/drawer/Plot.h
+        drawer/Plot.cpp
+        drawer/Plot.h
         lib/src/until.cpp
         lib/src/Vector.cpp
-        zadacha_dop/zadacha_dop.cpp)
+        zadacha_dop/zadacha_dop.cpp
+        zadacha_dop/generation.cpp
+        zadacha_dop/generation.h)
 
 
 # Связываем библиотеку math (`m`) с проектом

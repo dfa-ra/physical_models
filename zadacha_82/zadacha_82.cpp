@@ -7,7 +7,7 @@
 
 #include "../lib/includes/Vector.h"
 #include "../lib/includes/until.h"
-#include "../zadacha_dop/drawer/Plot.h"
+#include "../drawer/Plot.h"
 
 // функция перевода скрости  гр/мин -> гр/мс
 float v(const float v) {

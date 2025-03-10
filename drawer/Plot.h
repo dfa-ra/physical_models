@@ -35,16 +35,12 @@ public:
               // Добавление всех графиков
               for (const auto& plot : plots) {
                      vector<long double> x, y;
-                     cout << plot.first << ": ..." << endl;
 
                      // Сбор данных для графика
                      for (const auto& point : plot.second) {
                             x.push_back(point.x); // Предполагаем, что Vector имеет поля x и y
                             y.push_back(point.y);
-
-                            cout << y.back() << " ";
                      }
-                     cout << endl;
                      // Добавление графика
                      char* color = colors[colorIndex % colors.size()]; // Циклический выбор цвета
                      colorIndex += 1;
