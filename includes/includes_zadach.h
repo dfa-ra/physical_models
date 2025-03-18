@@ -7,5 +7,6 @@
 
 void zadacha_82();
 void zadacha_dop();
+void zadacha_wave();
 
 #endif

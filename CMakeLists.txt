@@ -22,14 +22,26 @@ add_executable(physical_models
         lib/src/Vector.cpp
         zadacha_dop/zadacha_dop.cpp
         zadacha_dop/generation.cpp
-        zadacha_dop/generation.h)
+        zadacha_dop/generation.h
+        zadacha_wave/zadacha_wave.cpp)
 
+# Подключение SFML
+find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
+target_link_libraries(physical_models PUBLIC sfml-graphics sfml-audio)
+
+# Подключение ALSA (libasound)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(ALSA REQUIRED alsa)
+target_include_directories(physical_models PRIVATE ${ALSA_INCLUDE_DIRS})
+target_link_libraries(physical_models PUBLIC ${ALSA_LIBRARIES})
 
 # Связываем библиотеку math (`m`) с проектом
 target_link_libraries(physical_models PRIVATE m)
 
+# Подключение matplot++
 add_subdirectory(matplotplusplus)
 target_link_libraries(physical_models PUBLIC matplot)
+
 # Если cJSON используется как C-библиотека, добавляем её как таковую
 set_target_properties(physical_models PROPERTIES CXX_EXTENSIONS OFF)
 set_source_files_properties(lib/cJSON/cJSON.c PROPERTIES LANGUAGE C)
