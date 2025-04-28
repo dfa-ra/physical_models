@@ -179,7 +179,6 @@ void zadacha_solnechn_system() {
     tela.push_back(uranus);
 
     float deltaTime = 3600 * 12;
-    // float G = 6.67430 * pow(10, -11) * k * k * k;
     float G = 6.67430 * pow(10, -11);
     while (scene.isOpen()) {
 
@@ -191,29 +190,16 @@ void zadacha_solnechn_system() {
 
                 updatePlanet(tela[i], tela[j], deltaTime, G);
 
-                //
-                // Vector distance = circle->coords - tela[j].coords;
-                // const long double dist = distance.magnitude();
-                // circle->a = circle->a + distance * (-G * tela[j].m / pow(dist, 3));
-                // circle->V = circle->V + circle->a * deltaTime;
-                // circle->coords = circle->coords + circle->V * deltaTime;
             }
             circle->V = circle->V + circle->a * deltaTime;
             circle->coords = circle->coords + circle->V * deltaTime;
 
             Planet pl = tela[i];
-            // std::cout << "-----------" << std::endl;
-            // std::cout << pl.coords << std::endl;
             pl.coords = pl.coords * k;
             pl.r = pl.r * k;
 
-            // std::cout << pl.r << std::endl;
-            // std::cout << pl.index << std::endl;
-            // std::cout << pl.coords << std::endl;
-            // std::cout << "============" << std::endl;
             scene.setCirclePosition(pl.index, pl);
         }
-        // std::cout << "next frame" << std::endl;
         if (!scene.update()) break;
 
         sf::sleep(sf::milliseconds(16)); // ~60 FPS
