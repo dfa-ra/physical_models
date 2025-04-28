@@ -26,7 +26,8 @@ add_executable(physical_models
         zadacha_wave/zadacha_wave.cpp
         zadacha_montecarlo/zadacha_montecarlo.cpp
         zadacha_serpinskiy_kvadrat/zadacha_serpinskiy_kvadrat.cpp
-        zadacha_chёt_impulse/zadacha_chёt_impulse.cpp)
+        zadacha_chёt_impulse/zadacha_chёt_impulse.cpp
+        zadacha_solnechn_system/zadacha_solnechn_system.cpp)
 
 # Подключение SFML
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

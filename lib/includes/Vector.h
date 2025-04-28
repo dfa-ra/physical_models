@@ -11,7 +11,7 @@
 #include <ostream>
 #include <stdio.h>
 
-class Vector {
+class   Vector {
 public:
     long double x;
     long double y;
@@ -69,6 +69,12 @@ public:
         return Vector{x / k, y / k, z / k};
     }
 
+    // Скалярное произведение
+    [[nodiscard]] double dot(const Vector& other) const {
+        return x * other.x + y * other.y;
+    }
+
+
     // Длина вектора
     [[nodiscard]] long double length() const {
         return std::sqrt(*this * *this);
@@ -78,6 +84,10 @@ public:
     [[nodiscard]] Vector normalize() const {
         long double len = length();
         return (len > 0) ? *this / len : Vector{0, 0, 0};
+    }
+
+    [[nodiscard]] long double magnitude() const {
+        return std::sqrt(x * x + y * y + z * z);
     }
 
     // Вывод вектора

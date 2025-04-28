@@ -7,6 +7,7 @@ int main() {
     // zadacha_wave();
     // zadacha_montecarlo();
     // zadacha_serpinskiy_kvadrat();
-    zadacha_chёt_impulse();
+    // zadacha_chёt_impulse();
+    zadacha_solnechn_system();
     return 0;
 }
