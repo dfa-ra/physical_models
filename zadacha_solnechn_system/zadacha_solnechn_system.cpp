@@ -78,7 +78,6 @@ public:
         if (radius < 1.0) {
             radius = 0.1 + radius * (1 - 0.1);
         }
-        // Применяем коэффициент k для всех координат планеты
         circles[index].setPosition(circle.coords.x - radius * koef, circle.coords.y - radius * koef);
     }
 
@@ -123,7 +122,6 @@ void updatePlanet(Planet &planet, const Planet &otherPlanet, float deltaTime, fl
 
     Vector a4 = calculateAcceleration(planet, otherPlanet, G);
 
-    // Усреднение ускорений
     Vector a_avg = (a1 + a2 * 2 + a3 * 2 + a4) / 6.0;
 
     planet.a = planet.a + a_avg;
